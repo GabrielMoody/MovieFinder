@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Movie Finder</string>
+    <string name="search_movies">Search movies…</string>
+    <string name="most_popular_movie_label">Most Popular (Movie)</string>
+    <string name="app_name_label">FilmApp</string>
+    <string name="film_detail_overview_label">Overview</string>
+    <string name="top_rated_movie_label">Top Rated (Movie)</string>
+    <string name="movie_poster">Movie Poster</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
