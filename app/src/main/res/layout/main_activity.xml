@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bebas_neue"
+        android:gravity="center"
+        android:text="Movie Finder"
+        android:textColor="@color/text_primary"
+        android:textSize="40dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,10 +23,14 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="412dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="8dp"
-            android:hint="Enter text here"
+            android:background="@color/dark_gray"
+            android:fontFamily="@font/bebas_neue"
+            android:hint="Search movie"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.0"
@@ -28,19 +42,20 @@
             android:id="@+id/button"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:textColor="@color/white"
             android:background="@drawable/ic_magnifying_glass"
             app:layout_constraintBottom_toBottomOf="@id/editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/editText" />
 
-        <!-- Section Title -->
-
         <TextView
             android:id="@+id/trending"
             android:layout_width="308dp"
             android:layout_height="38dp"
+            android:fontFamily="@font/bebas_neue"
             android:padding="8dp"
             android:text="Trending Movies"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

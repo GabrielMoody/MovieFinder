@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="380dp"
-android:layout_height="wrap_content"
-android:layout_margin="16dp">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="380dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/dark_gray"
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/detailsPoster"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:contentDescription="Movie Poster"
             android:scaleType="centerCrop" />
 
@@ -23,6 +26,8 @@ android:layout_margin="16dp">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/bebas_neue"
             android:text="Movie Title"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -32,7 +37,8 @@ android:layout_margin="16dp">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2023"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/bebas_neue"
             android:textSize="14sp" />
 
         <TextView
@@ -40,6 +46,8 @@ android:layout_margin="16dp">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/bebas_neue"
             android:text="A brief summary of the movie plot."
             android:textSize="14sp" />
     </LinearLayout>

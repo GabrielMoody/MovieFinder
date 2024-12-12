@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button: Button
     private lateinit var text: TextView
     private lateinit var filter: Spinner
+
+    private var movieList: List<MovieAPI.MovieResponse> = emptyList()
+
 
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
@@ -49,9 +52,40 @@ class MainActivity : AppCompatActivity() {
 
         getTrendingMovies()
 
+        val items = listOf("", "A-Z", "Z-A", "Rating")
+
+        filter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItem = items[position]
+                filterMovies(selectedItem)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                println("Nothing selected")
+            }
+        }
+
         button.setOnClickListener{
             searchMovie(search.text.toString())
         }
+    }
+
+    private fun filterMovies(filterType: String) {
+        if (movieList.isEmpty()) return
+
+        val sortedList = when (filterType) {
+            "A-Z" -> movieList.sortedBy { it.title }
+            "Z-A" -> movieList.sortedByDescending { it.title }
+            "Rating" -> movieList.sortedByDescending { it.popularity }
+            else -> movieList
+        }
+
+        recyclerView.adapter = MovieAdapter(sortedList)
     }
 
     private fun getTrendingMovies() {
@@ -64,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
-                    val movieList = responseBody.results!!
+                    movieList = responseBody.results!!
 
                     recyclerView.adapter = MovieAdapter(movieList)
 
@@ -95,7 +129,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
-                    val movieList = responseBody.results!!
+                    movieList = responseBody.results!!
                     recyclerView.adapter = MovieAdapter(movieList)
                     text.visibility = View.INVISIBLE
 

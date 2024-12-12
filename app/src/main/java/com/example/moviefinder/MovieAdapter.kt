@@ -1,5 +1,6 @@
 package com.example.moviefinder
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class MovieAdapter(private val movieList: List<MovieAPI.MovieResponse>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private var movieList: List<MovieAPI.MovieResponse>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val moviePoster: ImageView = itemView.findViewById(R.id.posterImageView)
@@ -35,5 +36,11 @@ class MovieAdapter(private val movieList: List<MovieAPI.MovieResponse>) : Recycl
     }
 
     override fun getItemCount(): Int = movieList.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateMovies(newMovies: List<MovieAPI.MovieResponse>) {
+        movieList = newMovies
+        notifyDataSetChanged()
+    }
 }
 
