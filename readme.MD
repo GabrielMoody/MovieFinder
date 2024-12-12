@@ -1,6 +1,6 @@
 # Movie Finder
 
-Aplikasi sederhana untu mencari film.
+Aplikasi sederhana untuk mencari film.
 
 API : The Movie Database (TMDB)
 
